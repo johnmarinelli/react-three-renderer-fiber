@@ -104,7 +104,7 @@ export class RendererWrapperDetails extends WrapperDetails<IWebGLRendererProps, 
   public wrapObject(rendererInstance: WebGLRenderer) {
     super.wrapObject(rendererInstance);
 
-    const property = Object.getOwnPropertyDescriptor(rendererInstance, "render");
+    let property = Object.getOwnPropertyDescriptor(rendererInstance, "render");
 
     const renderFunction = (scene: Scene, camera: Camera, renderTarget?: RenderTarget, forceClear?: boolean) => {
       const oldWarn = window.console.warn;
@@ -131,6 +131,9 @@ export class RendererWrapperDetails extends WrapperDetails<IWebGLRendererProps, 
     (renderFunction as any).displayName = "render";
 
     // if (propertyName === "render" && typeof window !== "undefined" && typeof window.console !== "undefined") {
+    property = property || {}
+    property.configurable = property.configurable || false
+    property.enumerable = property.enumerable || false
     Object.defineProperty(this.wrapper, "render", {
       configurable: property.configurable,
       enumerable: property.enumerable,
