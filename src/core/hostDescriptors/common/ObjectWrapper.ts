@@ -45,7 +45,7 @@ function createSetter(instance: any, propertyName: string): SetterFunction {
 const wrapperDetailsSymbol = Symbol("react-three-renderer-details");
 const wrapperSymbol = Symbol("react-three-renderer-wrapper");
 
-export function getWrappedAttributes(property: PropertyDescriptor,
+export function getWrappedAttributes(property: PropertyDescriptor | undefined = {},
                                      objectToWrap: any,
                                      propertyName: string): PropertyDescriptor {
   const attributes: PropertyDescriptor = {
