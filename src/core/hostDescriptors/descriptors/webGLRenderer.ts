@@ -129,9 +129,9 @@ export class RendererWrapperDetails extends WrapperDetails<IWebGLRendererProps, 
     (renderFunction as any).displayName = "render";
 
     // if (propertyName === "render" && typeof window !== "undefined" && typeof window.console !== "undefined") {
-    property = property || {}
-    property.configurable = property.configurable || false
-    property.enumerable = property.enumerable || false
+    property = property !== undefined ? property : {};
+    property.configurable = property.configurable !== undefined ? property.configurable : false;
+    property.enumerable = property.enumerable !== undefined ? property.enumerable : false;
     Object.defineProperty(this.wrapper, "render", {
       configurable: property.configurable,
       enumerable: property.enumerable,
