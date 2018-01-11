@@ -28,7 +28,7 @@ class Demo extends React.Component<any, {
         onAnimationFrame={this.onAnimationFrame}
         scene={<scene>
           <mesh
-            geometry={<circleGeometry radius={1} segments={32}/>}
+            geometry={<coneGeometry radius={0.5} height={0.5} />}
             material={<meshBasicMaterial
               color={0xffff00}
             />}
