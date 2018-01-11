@@ -28,7 +28,8 @@ class Demo extends React.Component<any, {
         onAnimationFrame={this.onAnimationFrame}
         scene={<scene>
           <mesh
-            geometry={<coneGeometry radius={0.5} height={0.5} />}
+            rotation={new THREE.Euler(0.5, 0.5, 0.0)}
+            geometry={<cylinderGeometry height={1} radiusTop={1} radiusBottom={1} />}
             material={<meshBasicMaterial
               color={0xffff00}
             />}
@@ -42,8 +43,8 @@ class Demo extends React.Component<any, {
           fov={75}
           aspect={window.innerWidth / window.innerHeight}
           near={0.1}
-          far={1000}
-          position={new THREE.Vector3(0, 0, 5)}
+          far={10000}
+          position={new THREE.Vector3(0, 0, 55)}
         />}
       />
     </webGLRenderer>;
