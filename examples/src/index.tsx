@@ -29,7 +29,7 @@ class Demo extends React.Component<any, {
         scene={<scene>
           <mesh
             rotation={new THREE.Euler(0.5, 0.5, 0.0)}
-            geometry={<cylinderGeometry height={1} radiusTop={1} radiusBottom={1} />}
+            geometry={<cylinderGeometry />}
             material={<meshBasicMaterial
               color={0xffff00}
             />}
@@ -43,8 +43,8 @@ class Demo extends React.Component<any, {
           fov={75}
           aspect={window.innerWidth / window.innerHeight}
           near={0.1}
-          far={10000}
-          position={new THREE.Vector3(0, 0, 55)}
+          far={1000}
+          position={new THREE.Vector3(0, 0, 5)}
         />}
       />
     </webGLRenderer>;
