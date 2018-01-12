@@ -140,11 +140,10 @@ class CameraExample extends React.Component<{}, { r: number }> {
             rotation={new Euler(0, Math.PI, 0)}
           />
           <mesh
-            geometry={<sphereGeometry
+            geometry={<dodecahedronGeometry
               radius={5}
-              widthSegments={16}
-              heightSegments={8}
-            />}
+              detail={0}
+              />}
             material={
               <meshBasicMaterial
                 color={0x0000ff}
@@ -201,6 +200,10 @@ class CameraExample extends React.Component<{}, { r: number }> {
     document.addEventListener("keydown", this.onKeyDown, false);
   }
 
+  public componentWillUnmount() {
+    console.log('unmounting')
+  }
+
   private onKeyDown = (event: KeyboardEvent) => {
     switch (event.keyCode) {
       case 79: /*O*/
@@ -217,6 +220,7 @@ class CameraExample extends React.Component<{}, { r: number }> {
   }
 
   private onAnimationFrame = () => {
+
     this.setState({
       r: Date.now() * 0.0005,
     }, () => {

@@ -1,3 +1,4 @@
+/*
 import "./Camera";
 import * as React from "react";
 import * as THREE from "three";
@@ -62,3 +63,5 @@ class Demo extends React.Component<any, {
 }
 
 ReactThreeRenderer.render(<Demo />, document.getElementById("example"));
+*/
+import "./Camera";
