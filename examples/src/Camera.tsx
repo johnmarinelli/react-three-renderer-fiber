@@ -7,6 +7,7 @@ import {
   OrthographicCamera,
   PerspectiveCamera, Scene,
   Vector3,
+  Vector2,
   WebGLRenderer,
 } from "three";
 
@@ -79,6 +80,16 @@ class CameraExample extends React.Component<{}, { r: number }> {
 
     const aspect = SCREEN_WIDTH / SCREEN_HEIGHT;
 
+    const lathePoints = []
+    for (let i = 0; i < 10; ++i) {
+      lathePoints.push(
+        new Vector2(
+          Math.sin(i * 0.2) * 10.0 + 5.0,
+          (i - 5.0) * 2.0,
+        )
+      );
+    }
+
     return <webGLRenderer
       width={SCREEN_WIDTH}
       height={SCREEN_HEIGHT}
@@ -140,10 +151,9 @@ class CameraExample extends React.Component<{}, { r: number }> {
             rotation={new Euler(0, Math.PI, 0)}
           />
           <mesh
-            geometry={<dodecahedronGeometry
-              radius={5}
-              detail={0}
-              />}
+            geometry={<latheGeometry
+              points={lathePoints}
+            />}
             material={
               <meshBasicMaterial
                 color={0x0000ff}
@@ -200,10 +210,6 @@ class CameraExample extends React.Component<{}, { r: number }> {
     document.addEventListener("keydown", this.onKeyDown, false);
   }
 
-  public componentWillUnmount() {
-    console.log('unmounting')
-  }
-
   private onKeyDown = (event: KeyboardEvent) => {
     switch (event.keyCode) {
       case 79: /*O*/
@@ -220,7 +226,6 @@ class CameraExample extends React.Component<{}, { r: number }> {
   }
 
   private onAnimationFrame = () => {
-
     this.setState({
       r: Date.now() * 0.0005,
     }, () => {
