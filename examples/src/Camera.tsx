@@ -79,15 +79,10 @@ class CameraExample extends React.Component<{}, { r: number }> {
     const SCREEN_HEIGHT = window.innerHeight;
 
     const aspect = SCREEN_WIDTH / SCREEN_HEIGHT;
+    const lathePoints = [];
 
-    const lathePoints = []
     for (let i = 0; i < 10; ++i) {
-      lathePoints.push(
-        new Vector2(
-          Math.sin(i * 0.2) * 10.0 + 5.0,
-          (i - 5.0) * 2.0,
-        )
-      );
+      lathePoints.push(new Vector2(Math.sin(i * 0.2) * 10 + 5, (i - 5) * 2));
     }
 
     return <webGLRenderer
