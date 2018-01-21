@@ -148,6 +148,15 @@ class CameraExample extends React.Component<{}, { r: number }> {
           <mesh
             geometry={<latheGeometry
               points={lathePoints}
+            geometry={
+              <extrudeGeometry
+              shapes={[shape]}
+              steps={2}
+              amount={16}
+              bevelEnabled
+              bevelThickness={1}
+              bevelSize={1}
+              bevelSegments={1}
             />}
             material={
               <meshBasicMaterial
