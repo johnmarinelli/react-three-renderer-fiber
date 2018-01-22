@@ -21,7 +21,6 @@ declare global {
 
 export class LatheGeometryWrapper extends GeometryWrapperBase<ILatheGeometryProps, LatheGeometry> {
   protected constructGeometry(props: ILatheGeometryProps): LatheGeometry {
-    const points = props.points.map(p => new THREE.Vector3(p.x, p.y, 0.0))
     return new LatheGeometry(
       props.points as any,
       props.segments,
