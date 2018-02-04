@@ -7,7 +7,6 @@ import {
   OrthographicCamera,
   PerspectiveCamera, Scene,
   Vector3,
-  Vector2,
   WebGLRenderer,
 } from "three";
 
@@ -79,11 +78,6 @@ class CameraExample extends React.Component<{}, { r: number }> {
     const SCREEN_HEIGHT = window.innerHeight;
 
     const aspect = SCREEN_WIDTH / SCREEN_HEIGHT;
-    const lathePoints = [];
-
-    for (let i = 0; i < 10; ++i) {
-      lathePoints.push(new Vector2(Math.sin(i * 0.2) * 10 + 5, (i - 5) * 2));
-    }
 
     return <webGLRenderer
       width={SCREEN_WIDTH}
@@ -146,17 +140,10 @@ class CameraExample extends React.Component<{}, { r: number }> {
             rotation={new Euler(0, Math.PI, 0)}
           />
           <mesh
-            geometry={<latheGeometry
-              points={lathePoints}
-            geometry={
-              <extrudeGeometry
-              shapes={[shape]}
-              steps={2}
-              amount={16}
-              bevelEnabled
-              bevelThickness={1}
-              bevelSize={1}
-              bevelSegments={1}
+            geometry={<sphereGeometry
+              radius={5}
+              widthSegments={16}
+              heightSegments={8}
             />}
             material={
               <meshBasicMaterial
